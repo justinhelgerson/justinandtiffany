@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Justin &amp; Tiffany</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/dist/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/assets/css/site.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400,700|Dancing+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+  </head>
+  
+  <body id="where">
+    <nav id="header" class="text-center">
+        <ul class="nav">
+            <li><a href="index.html">Home</a></li>
+            <li class="active"><a href="where.html">Where &amp; When</a></li>
+            <li><a href="https://docs.google.com/forms/d/1X4Xnz2oboYXUvdyHMsvSkieRrTGtSNJUEVpO7MoR-Bs/viewform?usp=send_form">RSVP</a></li>
+        </ul>
+    </nav>
+    
+    <div id="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="page-header">
+                        <h3>September 24th, 2016</h3>
+                    </div>
+                    
+                    <address>
+                        <strong>Aldo Leopold Nature Center-Black Earth</strong><br>
+                        10648 Sutcliffe Road<br>
+                        Black Earth, WI 53515<br>
+                    </address>
+                    
+                    <p>We love Wisconsin (who doesn’t?!?!) and all of the fantastic things that go along with this appropriately mitten-shaped state. So what better way to celebrate our marriage than nestled in the heart of Wisconsin’s rolling hillsides with friends and loved ones? We can’t think of anything better.</p>
+                    
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><b>Time</b></td>
+                                <td>3:30 PM</td>
+                            </tr>
+                            <tr>
+                                <td><b>Attire</b></td>
+                                <td>Semi Formal (though make yourself comfortable for the outdoors!)</td>
+                            </tr>
+                            <tr>
+                                <td><b>Parking</b></td>
+                                <td>Because ALNC is in a remote location, there is no parking lot.
+                                    Please plan to arrive at 3:30 to ensure time for parking (someone will assist you) before the ceremony at 4pm. 
+                                    Refreshments will be served and a fresh mix by Justin will be playing!
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <h4>Accommodations</h5>
+
+                    <p>If you need to find a hotel, we recommend booking accommodations in Middleton (26 min away):</p>
+                    
+                    <ul>
+                        <li><a href="http://hotels.countryinns.com/wi/middleton/hotels_middleton_wi_wimiddle.html">Country Inn and Suites</a></li>
+                        <li><a href="http://www.marriott.com/hotels/travel/msncw-courtyard-madison-west-middleton/">Courtyard Madison West/Middleton</a></li>
+                        <li><a href="http://www.marriott.com/hotels/travel/msnwm-residence-inn-madison-west-middleton/">Residence Inn</a></li>
+                    </ul>
+                    
+                    <h4>On-Site Accommodations</h4>
+                    <p>If you're young, hip, and want to spend the night in a lodge with a campy sauna, whirlpool tub, and a full kitchen for your late night snacking needs, please indicate so on your RSVP! We want everyone to be safe after a night of merriment, so we’re offering up bunk beds and two bedrooms for free. That's right, FREE!</p>
+                    
+                    <h4>Gifts</h4>
+                    <p>Gifts aren't necessary&ndash;your gift is sharing the day with us. <a href="https://www.youtube.com/watch?v=efutZR3l8rQ">And we really do mean that!</a></p>
+                    
+                    <h4>Directions</h4>
+                    <p>There are two Aldo Leopold locations--make sure you navigate to the Black Earth location. There is one in Monona, and if you wind up there, you will be saying "Mono-no"! Cell reception is spotty along the drive, so you may want to bring these directions as backup.</p>
+                    <p>Take us-14 west from Middleton for 12 miles. When you arrive in Black Earth, turn left onto Mills St. (by the giant cowboy boot of "The Shoe Box"). Continue on Mills St. for a half mile until you reach Madison St/County Highway F/KP and turn right. We will have signs after at this turn to guide you. Follow for one mile and turn left onto County Hwy F. In one mile, take a right onto Sutcliffe Rd. Continue for 1.4 miles until you reach Aldo Leopold on the right. Head down the winding driveway and you will be guided to park.</p>
+                </div>
+            </div>
+            
+            <div id="google-map" class="row text-center">
+                <div class="col-md-6 col-md-offset-3">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/dist/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4E7zmpQssQJSiBPdNpaCTu7nl98NnAmo"></script>
+    <script src="/dist/stamen/stamen.js"></script>
+    
+    <script>
+        var geocoder, map; 
+        
+        function initMap() {
+            codeAddress('Aldo Leopold Nature Center, 10648 Sutcliffe Road, Black Earth, WI 53515');
+        }
+
+        function codeAddress(address) {
+            geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                'address': address
+            }, function(results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var layer = "toner";
+                    
+                    var options = {
+                        zoom: 10,
+                        center: results[0].geometry.location,
+                        disableDefaultUI: true,
+                        zoomControl: true,
+                        mapTypeId: layer,
+                        mapTypeControlOptions: {
+                            mapTypeIds: [layer]
+                        }
+                    }
+                    map = new google.maps.Map(document.getElementById("map"), options);
+                    map.mapTypes.set(layer, new google.maps.StamenMapType(layer));
+
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                }
+            });
+        }
+        
+        initMap();
+    </script>
+  </body>
+</html>
